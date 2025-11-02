@@ -94,6 +94,10 @@ jobs:
         set +e
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
+        export BOARD_USES_VENDOR_BOOT=true
+        export BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT=true
+        export BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT=true
+        export BOARD_BOOT_HEADER_VERSION=3
         set -e
         lunch twrp_${{ inputs.DEVICE_NAME }}-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image
 
